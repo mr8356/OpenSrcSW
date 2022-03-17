@@ -50,10 +50,8 @@ public class Main {
 		Elements doclist = xml.select("doc");
 		Elements titlelist = xml.select("title");
 		Elements bodylist = xml.select("body");
-		//Elements bodylist = xml.select("doc");
-		System.out.println(bodylist.get(0).text());
+		//System.out.println(bodylist.get(0).text());
 		int IdNum = doclist.size();
-		//int IdNum = 1;
 
 		for (int i=0; i<IdNum ; i++ ){
 			Element d = doc.createElement("doc");
