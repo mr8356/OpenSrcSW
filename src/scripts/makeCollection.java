@@ -8,16 +8,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.jsoup.Jsoup;
-import org.jsoup.parser.Parser;
-import org.jsoup.select.Elements;
-import org.snu.ids.kkma.*;
-import org.snu.ids.kkma.index.Keyword;
 import org.snu.ids.kkma.index.KeywordExtractor;
 import org.snu.ids.kkma.index.KeywordList;
 import org.w3c.dom.Document;
@@ -33,7 +28,7 @@ public class makeCollection {
         this.p = p;
     }
 
-    public static int createXml() throws ParserConfigurationException, IOException, TransformerException {
+    public static int makeXml() throws ParserConfigurationException, IOException, TransformerException {
 		File file[] = null;
 		try {
 			file = makeFileList(p);
@@ -74,7 +69,7 @@ public class makeCollection {
 		transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		
 		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new FileOutputStream(new File("xml/collection.xml")));
+		StreamResult result = new StreamResult(new FileOutputStream(new File("./collection.xml")));
 		transformer.transform(source, result);
 
 		return NumOfId;

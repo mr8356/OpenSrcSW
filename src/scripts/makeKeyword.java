@@ -7,7 +7,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -15,7 +14,6 @@ import javax.xml.transform.stream.StreamResult;
 import org.jsoup.Jsoup;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
-import org.snu.ids.kkma.*;
 import org.snu.ids.kkma.index.Keyword;
 import org.snu.ids.kkma.index.KeywordExtractor;
 import org.snu.ids.kkma.index.KeywordList;
@@ -25,18 +23,19 @@ import org.w3c.dom.Element;
 
 
 public class makeKeyword {
-    private static String path = new String();
-    
+
+	private static String input_file=new String();
+	private String output_flie = "./index.xml";
 
     public makeKeyword(String p) {
-        this.path = p;
+        this.input_file = p;
     }
     
 
-    public static void createIndex() throws TransformerException, ParserConfigurationException, IOException{
+    public static void convertXml() throws TransformerException, ParserConfigurationException, IOException{
 		File xmlFile = null;
 		try {
-			xmlFile = new File(path);
+			xmlFile = new File(input_file);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,8 +69,7 @@ public class makeKeyword {
 			//키워드1:빈도수# 키워드2:빈도수# 키워드3:빈도수#
 			String bodyText = new String();
 
-			for( int j = 0; j < kl.size(); j++ ) {
-				Keyword kwrd = kl.get(j);
+			for (Keyword kwrd : kl) {
 				bodyText += kwrd.getString() + ":" + kwrd.getCnt() + "#";
 			}
 
