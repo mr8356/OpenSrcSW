@@ -14,7 +14,7 @@ public class kuir {
 		// TODO Auto-generated method stub
 		// createXml();
 		// createIndex("xml/collection.xml");
-
+		//
 		//String command = args[0];   
 		//	String path = args[1];
 	
@@ -29,7 +29,6 @@ public class kuir {
 
 			indexer ind = new indexer("indexfolder/index.xml");
 			ind.post();
-			
 	}
 	
 }
