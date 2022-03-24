@@ -9,26 +9,41 @@ import javax.xml.transform.TransformerException;
 
 
 public class kuir {
+//javac -cp jars/jsoup-1.14.3.jar:jars/kkma-2.1.jar src/scripts/*.java -d bin -encoding UTF8
+
+
+//run code//
+/*
+
+java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -c data
+
+java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -k ./collection.xml
+
+java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -i ./index.xml
+
+*/
+
 
 	public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException {
 		// TODO Auto-generated method stub
 		// createXml();
 		// createIndex("xml/collection.xml");
 		//
-		//String command = args[0];   
-		//	String path = args[1];
-	
-			//if(command.equals("-c")) {
-				makeCollection collection = new makeCollection("html");
+		String command = args[0];   
+		String path = args[1];
+			if(command.equals("-c")) {
+				makeCollection collection = new makeCollection(path);
 				collection.makeXml();
-			//}
-			//else if(command.equals("-k")) {
-				makeKeyword keyword = new makeKeyword("./collection.xml");
+			}
+			else if(command.equals("-k")) {
+				makeKeyword keyword = new makeKeyword(path);
 				keyword.convertXml();
-			//}
+			}
+			else if(command.equals("-i")) {
+				indexer ind = new indexer(path);
+				ind.post();
+			}
 
-			indexer ind = new indexer("indexfolder/index.xml");
-			ind.post();
 	}
 	
 }

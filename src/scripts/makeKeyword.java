@@ -84,7 +84,7 @@ public class makeKeyword {
 		transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		
 		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new FileOutputStream(new File("indexfolder/index.xml")));
+		StreamResult result = new StreamResult(new FileOutputStream(new File("./index.xml")));
 		transformer.transform(source, result);
 	}
 }
