@@ -15,7 +15,6 @@ public class kuir {
 		// createXml();
 		// createIndex("xml/collection.xml");
 
-
 		//String command = args[0];   
 		//	String path = args[1];
 	
