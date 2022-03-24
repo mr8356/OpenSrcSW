@@ -14,21 +14,19 @@ public class kuir {
 
 //run code//
 /*
+java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir 
+*/
 
+/*
+-c data , -k ./collection.xml , -i ./index.xml
 java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -c data
-
 java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -k ./collection.xml
-
 java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -i ./index.xml
-
 */
 
 
 	public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException {
 		// TODO Auto-generated method stub
-		// createXml();
-		// createIndex("xml/collection.xml");
-		//
 		String command = args[0];   
 		String path = args[1];
 			if(command.equals("-c")) {
