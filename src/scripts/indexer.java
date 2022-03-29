@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.jsoup.Jsoup;
-import org.jsoup.internal.StringUtil;
+
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 
@@ -81,6 +81,7 @@ public class indexer {
                     else
                     hash.put(temp[0], strtemp);
             }
+            ////gg
             Set<String> tt = stringandid.keySet();
             for(String k : tt){
                 if (!indexmap.containsKey(k)) {
