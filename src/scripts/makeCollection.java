@@ -28,7 +28,7 @@ public class makeCollection {
         this.p = p;
     }
 
-    public static int makeXml() throws ParserConfigurationException, IOException, TransformerException {
+    public int makeXml() throws ParserConfigurationException, IOException, TransformerException {
 		File file[] = null;
 		try {
 			file = makeFileList(p);

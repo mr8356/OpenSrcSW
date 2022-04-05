@@ -24,15 +24,16 @@ import org.w3c.dom.Element;
 
 public class makeKeyword {
 
-	private static String input_file=new String();
+	private String input_file=new String();
 	private String output_flie = "./index.xml";
-
-    public makeKeyword(String p) {
-        this.input_file = p;
-    }
     
 
-    public static void convertXml() throws TransformerException, ParserConfigurationException, IOException{
+    public makeKeyword(String input_file) {
+		this.input_file = input_file;
+	}
+
+
+	public void convertXml() throws TransformerException, ParserConfigurationException, IOException{
 		File xmlFile = null;
 		try {
 			xmlFile = new File(input_file);

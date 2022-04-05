@@ -26,6 +26,11 @@ public class kuir {
 				indexer ind = new indexer(path);
 				ind.post();
 			}
+			else if(command.equals("-s")) {
+				searcher ser = new searcher(path);
+				String query = args[3];
+				System.out.println(ser.CalcSim(query));
+			}
 
 	}
 	
@@ -44,5 +49,8 @@ java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir
 java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -c data
 java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -k ./collection.xml
 java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -i ./index.xml
+java -cp ./jars/jsoup-1.14.3.jar:./jars/kkma-2.1.jar:bin scripts.kuir -s ./index.post -q "라면에는 면 분말 스프가 있다."
+
+-s ./index.post -q "라면과 스프"
 */
 
