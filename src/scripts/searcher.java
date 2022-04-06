@@ -47,6 +47,12 @@ public class searcher {
         double[][] postVec = new double[idNum][keyNum];
 
         for (int i = 0; i < keyNum; i++) {//ki j문서
+                if (!post.contains(key.get(i))) {
+                    for (int j = 0; j<idNum; j++) {
+                        postVec[j][i] = 0;
+                    }
+                    continue;
+                }
                 String temp[] =  outhash.get(key.get(i)).split(" ");
                 for (int j = 0; j<idNum; j++) {
                     double w = Double.parseDouble(temp[j*2+1]);

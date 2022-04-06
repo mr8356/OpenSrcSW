@@ -7,7 +7,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import javax.xml.transform.TransformerException;
 
-
 public class kuir {
 	public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException, ClassNotFoundException {
 		//String path ="./index.xml";
