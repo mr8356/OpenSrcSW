@@ -18,7 +18,6 @@ import org.snu.ids.kkma.index.KeywordList;
 public class searcher {
     private String path;
 
-
     public searcher(String path) {
         this.path = path;
     }
