@@ -22,7 +22,7 @@ public class searcher {
         this.path = path;
     }
 
-    public String CalcSim(String query) throws IOException, ClassNotFoundException {
+    public String InnerProduct(String query) throws IOException, ClassNotFoundException {
         int idNum , keyNum;
         KeywordExtractor ke = new KeywordExtractor();
 		KeywordList kl = ke.extractKeyword(query , true);
@@ -61,10 +61,6 @@ public class searcher {
         }
 
 
-        // for (String k : key) {
-        //     System.out.println("단어들 "+k);
-        // }
-
         double[] result = new double[idNum];
         
         double sum=0;
@@ -77,9 +73,6 @@ public class searcher {
             result[i] = sum;
         }
 
-        // for (int k = 0; k < result.length; k++) {
-        //     System.out.println("id는 "+k+ "  "+result[k]);
-        // }
 
         ArrayList<Integer> maxindex = new ArrayList<Integer>();
         for (int i=0; i<3; i++) {
