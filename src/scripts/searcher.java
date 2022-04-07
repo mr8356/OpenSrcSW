@@ -115,4 +115,12 @@ public class searcher {
         return Math.sqrt(tempB)*Math.sqrt(tempA);
     }
 
+    public double InnerProduct(ArrayList<Double> qVec , double[] postVec) throws IOException, ClassNotFoundException {
+        double sum =0.0;
+        for (int j = 0; j <qVec.size(); j++) {
+            sum+= (double) qVec.get(j)* postVec[j];
+        }
+        return sum;
+    }
+
 }
