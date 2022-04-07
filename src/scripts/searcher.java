@@ -49,7 +49,7 @@ public class searcher {
         for (int i = 0; i < keyNum; i++) {//ki j문서
                 if (!post.contains(key.get(i))) {
                     for (int j = 0; j<idNum; j++) {
-                        postVec[j][i] = 0;
+                        postVec[j][i] = 0.0;
                     }
                     continue;
                 }
@@ -76,25 +76,28 @@ public class searcher {
             }
             result[i] = sum;
         }
+        for (int i = 0; i < idNum; i++) { //i 문서
+            double temp = getABsize(qVec, postVec[i]);
+            if(temp==0)
+                result[i] = 0.0;
+            else
+                result[i] = result[i]/getABsize(qVec, postVec[i]);
+        }
 
-        // for (int k = 0; k < result.length; k++) {
-        //     System.out.println("id는 "+k+ "  "+result[k]);
-        // }
-
-        ArrayList<Integer> maxindex = new ArrayList<Integer>();
+        ArrayList<Integer> index = new ArrayList<Integer>();
+        double[] maxCalc = result.clone();
         for (int i=0; i<3; i++) {
-            int tempindex=0;
-            double Max = 0.0;
+            int maxindex=0;
             for (int j=0; j<idNum; j++) {
-                if(result[j]>=Max){
-                    Max = result[j];
-                    tempindex = j;
+                if(maxCalc[j]>=maxCalc[maxindex]){
+                    maxindex = j;
                 }
             }
-            if(Max==0)
+            if(maxCalc[maxindex]==0)
                 continue;
-            maxindex.add(tempindex);
-            result[tempindex]=0;
+            index.add(maxindex);
+            maxCalc[maxindex]=0.0;
+
         }
         File xmlFile = null;
 		try {
@@ -106,9 +109,21 @@ public class searcher {
 		org.jsoup.nodes.Document xml =  Jsoup.parse(xmlFile , "UTF-8" , "" , Parser.xmlParser() );
 		Elements titlelist = xml.select("title");
         String str=new String();
-        for (Integer i : maxindex) {
-            str+=titlelist.get(i).text()+" ";
+        for (int i: index) {
+            str+=titlelist.get(i).text()+" "+result[i] +"\n";
         }
         return str;
+    }
+
+    private double getABsize(ArrayList<Double> q , double postV[]){
+        double tempA = 0.0;
+        double tempB = 0.0;
+        for (double d : postV) {
+            tempB += d*d;
+        }
+        for (double d : q) {
+            tempA += d*d;
+        }
+        return Math.sqrt(tempB)*Math.sqrt(tempA);
     }
 }
