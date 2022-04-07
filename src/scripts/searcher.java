@@ -59,24 +59,17 @@ public class searcher {
                     postVec[j][i] = w;
                 }
         }
-
+        
         double[] result = new double[idNum];
         
         double sum=0;
-        
-        for (int i = 0; i < idNum; i++) { //i 문서
-            sum=0.0;
-            for (int j = 0; j <keyNum; j++) {
-                sum+= (double) qVec.get(j)* postVec[i][j];
-            }
-            result[i] = sum;
-        }
+
         for (int i = 0; i < idNum; i++) { //i 문서
             double temp = getABsize(qVec, postVec[i]);
             if(temp==0)
                 result[i] = 0.0;
             else
-                result[i] = result[i]/getABsize(qVec, postVec[i]);
+                result[i] = InnerProduct(qVec , postVec[i])/getABsize(qVec, postVec[i]);
         }
 
         ArrayList<Integer> index = new ArrayList<Integer>();
