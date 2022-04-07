@@ -22,7 +22,7 @@ public class searcher {
         this.path = path;
     }
 
-    public String InnerProduct(String query) throws IOException, ClassNotFoundException {
+    public double[] InnerProduct(String query) throws IOException, ClassNotFoundException {
         int idNum , keyNum;
         KeywordExtractor ke = new KeywordExtractor();
 		KeywordList kl = ke.extractKeyword(query , true);
@@ -73,33 +73,6 @@ public class searcher {
             result[i] = sum;
         }
 
-
-        ArrayList<Integer> maxindex = new ArrayList<Integer>();
-        for (int i=0; i<3; i++) {
-            int tempindex=0;
-            for (int j=0; j<idNum; j++) {
-                if(result[j]>=result[tempindex]){
-                    tempindex = j;
-                }
-            }
-            if(result[tempindex]==0)
-                continue;
-            maxindex.add(tempindex);
-            result[tempindex]=0;
-        }
-        File xmlFile = null;
-		try {
-			xmlFile = new File("index.xml");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		org.jsoup.nodes.Document xml =  Jsoup.parse(xmlFile , "UTF-8" , "" , Parser.xmlParser() );
-		Elements titlelist = xml.select("title");
-        String str=new String();
-        for (Integer i : maxindex) {
-            str+=titlelist.get(i).text()+" ";
-        }
-        return str;
+        return result;
     }
 }
