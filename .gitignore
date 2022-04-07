@@ -1,2 +1,4 @@
-/.settings/
-/.vscode/
+.vscode/
+.classpath
+.project
+.settings/

@@ -84,14 +84,12 @@ public class searcher {
         ArrayList<Integer> maxindex = new ArrayList<Integer>();
         for (int i=0; i<3; i++) {
             int tempindex=0;
-            double Max = 0.0;
             for (int j=0; j<idNum; j++) {
-                if(result[j]>=Max){
-                    Max = result[j];
+                if(result[j]>=result[tempindex]){
                     tempindex = j;
                 }
             }
-            if(Max==0)
+            if(result[tempindex]==0)
                 continue;
             maxindex.add(tempindex);
             result[tempindex]=0;
