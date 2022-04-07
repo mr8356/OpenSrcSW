@@ -22,57 +22,12 @@ public class searcher {
         this.path = path;
     }
 
-    public double[] InnerProduct(String query) throws IOException, ClassNotFoundException {
-        int idNum , keyNum;
-        KeywordExtractor ke = new KeywordExtractor();
-		KeywordList kl = ke.extractKeyword(query , true);
-        keyNum =  kl.size();
-        ArrayList<String> key = new ArrayList<String>();
-        ArrayList<Double> qVec = new ArrayList<Double>();
-        //ArrayList<Double[]> postVec = new ArrayList<Double[]>();
-        
-        for (Keyword kwrd : kl) {
-            key.add(kwrd.getString());
-            qVec.add((double) kwrd.getCnt());
+    public double InnerProduct(ArrayList<Double> qVec , double[] postVec) throws IOException, ClassNotFoundException {
+        double sum =0.0;
+        for (int j = 0; j <qVec.size(); j++) {
+            sum+= (double) qVec.get(j)* postVec[j];
         }
-
-        FileInputStream filein = new FileInputStream(path);
-        ObjectInputStream obin = new ObjectInputStream(filein);
-        Object obj = obin.readObject();
-        obin.close();
-        HashMap<String  , String> outhash = (HashMap<String  , String>)obj;
-        Set<String> post = outhash.keySet();
-
-        idNum = ((((String) outhash.get(post.iterator().next())).split(" ")).length)/2;
-        double[][] postVec = new double[idNum][keyNum];
-
-        for (int i = 0; i < keyNum; i++) {//ki j문서
-                if (!post.contains(key.get(i))) {
-                    for (int j = 0; j<idNum; j++) {
-                        postVec[j][i] = 0;
-                    }
-                    continue;
-                }
-                String temp[] =  outhash.get(key.get(i)).split(" ");
-                for (int j = 0; j<idNum; j++) {
-                    double w = Double.parseDouble(temp[j*2+1]);
-                    postVec[j][i] = w;
-                }
-        }
-
-
-        double[] result = new double[idNum];
-        
-        double sum=0;
-        
-        for (int i = 0; i < idNum; i++) { //i 문서
-            sum=0.0;
-            for (int j = 0; j <keyNum; j++) {
-                sum+= (double) qVec.get(j)* postVec[i][j];
-            }
-            result[i] = sum;
-        }
-
-        return result;
+        return sum;
     }
+
 }
