@@ -60,11 +60,6 @@ public class searcher {
                 }
         }
 
-
-        // for (String k : key) {
-        //     System.out.println("단어들 "+k);
-        // }
-
         double[] result = new double[idNum];
         
         double sum=0;
