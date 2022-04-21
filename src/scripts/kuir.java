@@ -2,6 +2,7 @@ package scripts;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -29,6 +30,14 @@ public class kuir {
 				searcher ser = new searcher(path);
 				String query = args[3];
 				System.out.println(ser.CalcSim(query));
+			}
+			else if(command.equals("-m")) {
+				String query ="";
+				for (int i = 3; i < args.length; i++) {
+					query+=args[i];
+				}
+				MidTerm mid  = new MidTerm(path);
+				mid.showSnippet(query);
 			}
 
 	}
