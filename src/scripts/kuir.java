@@ -14,6 +14,7 @@ public class kuir {
 		//TODO Auto-generated method stub
 		String command = args[0]; 
 		String path = args[1];
+			// 데이터를 
 			if(command.equals("-c")) {
 				makeCollection collection = new makeCollection(path);
 				collection.makeXml();
